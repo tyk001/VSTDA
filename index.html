@@ -4,7 +4,7 @@
     <title> VSTDA </title>
 
     <!--- Latest Angular --->
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script src="node_modules/angular/angular.min.js"></script>
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -32,26 +32,26 @@
 
                         <!--- Add To Do Block --->
                         <div class="container">
-                            Add To-do Item
+                            Add To-do Item<br>
                             <label for "myText">Text</label><br>
                             <input class="form-control" type="text" ng-model="vm.toDoInput"><br>
                             <label for "myPriority">Priority</label><br>
                             <select class="form-control" ng-model="vm.toDoPrioritySelect">
-                                <option value="High">High</option>
-                                <option value="Medium">Medium</option>
-                                <option value="Low">Low</option>
+                                <option value="3">High</option>
+                                <option value="2">Medium</option>
+                                <option value="1">Low</option>
                             </select>
                             <button id='submitButton' class='btn btn-primary' ng-click="vm.toDoAdd()">Add Todo</button>
                         </div>
                         <div class="col">
                       </div>
                             <div class="btn-group" ng-model="selectedFilter" role="group">
-                                <button type="button" class="btn btn-secondary" ng-click="vm.sortList(1)">Order by Highest Priority</button>
-                                <button type="button" class="btn btn-secondary" ng-sort="vm.sortList(2)">Order by Lowest Priority</button>
-                                <button type="button" class="btn btn-secondary" ng-sort="vm.sortList(3)">Order Alphabetically</button>
+                                <button type="button" class="btn btn-secondary" ng-click="vm.sortList('itemPriority')">Order by Highest Priority</button>
+                                <button type="button" class="btn btn-secondary" ng-click="vm.sortList('-itemPriority')">Order by Lowest Priority</button>
+                                <button type="button" class="btn btn-secondary" ng-click="vm.sortList('itemText')">Order Alphabetically</button>
                             </div>
                             <ul>
-                                <li ng-repeat="item in vm.items | orderBy : vm.showMeOrder">
+                                <li ng-repeat="item in vm.items">
                                     <span>{{ item.itemText }} - {{ item.itemPriority }}</span>
                                 </li>
                             </ul>

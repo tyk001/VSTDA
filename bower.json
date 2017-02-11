@@ -1,0 +1,18 @@
+{
+  "name": "vstda",
+  "description": "",
+  "main": "script.js",
+  "authors": [
+    "Tyler <tknotts@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/tyk001/VSTDA",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

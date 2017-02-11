@@ -1,0 +1,22 @@
+{
+  "name": "vstda",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tyk001/VSTDA.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tyk001/VSTDA/issues"
+  },
+  "homepage": "https://github.com/tyk001/VSTDA#readme",
+  "description": "",
+  "dependencies": {
+    "angular": "^1.6.2"
+  }
+}

@@ -1,48 +1,38 @@
 (function() {
-    //  'use strict';
+  //  'use strict';
 
-    angular
-      .module('myApp', [])
-      .controller('toDoController', toDoController);
+  angular
+    .module('myApp', [])
+    .controller('toDoController', toDoController);
 
-    toDoController.$inject = [];
+  toDoController.$inject = ['$filter'];
 
-    /* @ngInject */
-    function toDoController() {
-      var orderBy = '';
-      var vm = this;
-      vm.items = [];
+  /* @ngInject */
+  function toDoController($filter) {
+    var vm = this;
+    var orderBy = '';
+    var showMeOrder = '';
+    vm.items = [];
 
-      activate();
+    activate();
 
-      function activate() {
-        // need to add an item to the list
+    function activate() {
+      // need to add an item to the list
 
-        vm.toDoAdd = function() {
+      vm.toDoAdd = function() {
 
-          vm.items.push({
-            itemText: vm.toDoInput,
-            itemPriority: vm.toDoPrioritySelect
-          });
-          console.log(vm.items);
-          vm.toDoInput = "";
-        };
+        vm.items.push({
+          itemText: vm.toDoInput,
+          itemPriority: vm.toDoPrioritySelect
+        });
+        console.log(vm.items);
+        vm.toDoInput = "";
+      };
 
-        vm.sortList = function(sortMethod) {
-          switch (sortMethod) {
-            case '1':
-              vm.showMeOrder = 'itemPriority';
-              break;
-            case '2':
-              vm.showMeOrder = '-itemPriority';
-              break;
-            case '3':
-              vm.showMeOrder = 'itemText';
-              break;
-            default:
-          }
-        }
-      }
+      vm.sortList = function(sortMethod) {
+        console.log(sortMethod);
+        vm.items = $filter('orderBy')(vm.items, sortMethod);
+      };
     }
   }
 })()
