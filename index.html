@@ -1,0 +1,62 @@
+<html ng-app="myApp">
+
+<head>
+    <title> VSTDA </title>
+
+    <!--- Latest Angular --->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!--- My JavaScript --->
+    <script type="text/javascript" src="script.js"></script>
+
+</head>
+
+<body>
+    <p>
+        <h1 id="title">Very Simple Todo App</h1>
+        <hr></hr>
+        <p>In this project you are going to build a sophisticated Todo app using Angular JS that allows users to enter their do items and prioritize them based on their importance.</p>
+
+        <p>The app will then allow users to sort their todo items based on the priority, or by alphabetical order.</p>
+
+
+        <div class="container">
+                <div class="col">
+                    <div ng-controller="toDoController as vm">
+
+                        <!--- Add To Do Block --->
+                        <div class="container">
+                            Add To-do Item
+                            <label for "myText">Text</label><br>
+                            <input class="form-control" type="text" ng-model="vm.toDoInput"><br>
+                            <label for "myPriority">Priority</label><br>
+                            <select class="form-control" ng-model="vm.toDoPrioritySelect">
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                            <button id='submitButton' class='btn btn-primary' ng-click="vm.toDoAdd()">Add Todo</button>
+                        </div>
+                        <div class="col">
+                      </div>
+                            <div class="btn-group" ng-model="selectedFilter" role="group">
+                                <button type="button" class="btn btn-secondary" ng-click="vm.sortList(1)">Order by Highest Priority</button>
+                                <button type="button" class="btn btn-secondary" ng-sort="vm.sortList(2)">Order by Lowest Priority</button>
+                                <button type="button" class="btn btn-secondary" ng-sort="vm.sortList(3)">Order Alphabetically</button>
+                            </div>
+                            <ul>
+                                <li ng-repeat="item in vm.items | orderBy : vm.showMeOrder">
+                                    <span>{{ item.itemText }} - {{ item.itemPriority }}</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+</body>
+
+</html>
